@@ -1,0 +1,4 @@
+Hola, esta es la primera línea.
+Esta es la segunda línea.
+¿Y la tercera? Aquí está.
+Al final del archivo, no hay más líneas.
