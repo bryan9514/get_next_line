@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brturcio <brturcio@student.42angouleme.fr  +#+  +:+       +#+        */
+/*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:46:22 by brturcio          #+#    #+#             */
-/*   Updated: 2024/11/27 21:13:17 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:23:10 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 int	main(void)
 {
-	int fd = open (/home/bt24/42 Ecole/get_next_line/file.txt,int O_RDONLY);
-	printf ("%s", get_next_line(fd));
+	int		fd;
+	char	*line;
+
+	fd = open("file.txt", O_RDONLY);
+	line = 
+	printf("%s", get_next_line(fd));
 	free(fd);
 	return (0);
 }

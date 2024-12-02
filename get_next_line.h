@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brturcio <brturcio@student.42angouleme.fr  +#+  +:+       +#+        */
+/*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:45:00 by brturcio          #+#    #+#             */
-/*   Updated: 2024/11/27 18:41:06 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:56:00 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define GET_NEXT_LINE
 
 #include <fcntl.h>
-#incldue <stdio.h>
+#include <stdio.h>
 
 
 #endif

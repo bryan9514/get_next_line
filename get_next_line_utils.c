@@ -10,4 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+char	*ft_strdup(const char *s)
+{
+	size_t	i;
+	char	*str;
 
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	str = malloc(sizeof(char) * (i + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
