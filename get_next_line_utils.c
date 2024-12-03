@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brturcio <brturcio@student.42angouleme.fr  +#+  +:+       +#+        */
+/*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:44:45 by brturcio          #+#    #+#             */
-/*   Updated: 2024/11/21 18:44:49 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/03 20:17:38 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,6 @@ char	*ft_strdup(const char *s)
 	str[i] = '\0';
 	return (str);
 }
+
+
+
