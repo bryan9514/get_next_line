@@ -6,7 +6,7 @@
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:45:00 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/03 20:17:41 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/04 20:41:14 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 #include <fcntl.h>
 #include <stdio.h>
+
+char	*get_next_line(int fd);
+char *fill_line(int fd, char *buffer, char *line);
 
 
 

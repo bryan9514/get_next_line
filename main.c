@@ -6,7 +6,7 @@
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:46:22 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/03 19:18:40 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/04 20:40:27 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,13 @@ int	main(void)
 
 	fd = open("file.txt", O_RDONLY);
 	if (fd < 0)
-		return (1));
+	{
+		printf ("Open error !\n");
+		return (1);
+	}
 	line = get_next_line(fd);
+	if (line == NULL)
+		return (1);
 	while (line)
 	{
 		printf("%s", line);
