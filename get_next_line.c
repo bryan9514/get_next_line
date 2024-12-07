@@ -6,48 +6,46 @@
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:44:30 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/06 17:56:18 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:13:50 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *line_found(char *buf)
-{
-	int	i;
 
-	i = 0;
-	while (buf[i] != '\0')
+
+char *read_buf(int fd, char *content)
+{
+	int	nb_read;
+	char	*buffer; // esta es la que tengo que darle a read  para guardar los datos
+
+	if (content == NULL)
+		content = ft_strdup("");
+	while (ft_strrchr(buffer, '\n') == NULL)
 	{
-		if (buf[i] == '\n')
-		{
-			
-		}
+			buffer = ft_calloc(BUFFER_SIZE + 1 , sizeof(char));
+			if (!buffer)
+				return (NULL);
+			nb_read = read(fd, buffer, BUFFER_SIZE);
+			if (nb_read < 0)
+			{
+				free (content);
+				free (buffer);
+				return (NULL);
+			}
+			content = ft_strjoin(buffer,content);
 	}
-}
-
-char *fill_line(int fd)
-{
-	size_t	nb_read;
-	static char	*buffer;
-	char	*line;
-
-	buffer = ft_calloc(BUFFER_SIZE + 1 , sizeof(char));
-	if (!buffer)
-	 	return (NULL);
-	nb_read = read(fd, buffer, BUFFER_SIZE);
-	if (nb_read <= 0)
-		return (free (buffer),NULL);
-	line = line_found (buffer);
-	return (buffer);
+	return (content);
 }
 char	*get_next_line(int fd)
 {
-	char	*tmp;
+	static char	*content = NULL; //esta va contener todo lo que vamos a leer con otra variable
+	// char	*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	tmp = fill_line(fd);
+	content = read_buf(fd, content);
+	// line = search_line(buffer);
 
-	return (tmp);
+	return (content);
 }
