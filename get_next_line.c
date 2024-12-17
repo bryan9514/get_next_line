@@ -6,59 +6,74 @@
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:44:30 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/09 15:41:34 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/17 19:43:11 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 
-
-char *read_buf(int fd, char *content)
+char	*read_buff(int fd, char *data)
 {
-	int	nb_read;
-	char	*buffer = NULL; // esta es la que tengo que darle a read  para guardar los datos
-	char	*temp;
+	int	nb_buffer;
+	char	*buffer_data;
+	char	*tmp;
 
-	nb_read = 1;
-	if (content == NULL)
-		content = ft_strdup("");
-	while (nb_read > 0 )
+	nb_buffer = 1;
+	if (data == NULL)
+		ft_strdup("");
+	while (nb_buffer > 0 && !ft_strrchr(buffer_data,'\n'))
 	{
-		buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-		if (!buffer)
-			return (free(content),NULL);
-		nb_read = read(fd, buffer, BUFFER_SIZE);
-		if (nb_read < 0)
-			return (free (content),free (buffer),NULL);
-		if (nb_read == 0)
-        {
-            free(buffer);
-            break;
-        }
-        buffer[nb_read] = '\0';
-        temp = content;
-        content = ft_strjoin(temp, buffer);
-        free(temp);
-        temp = NULL;
-		if (ft_strrchr(buffer, '\n'))
-			break ;
-
+		buffer_data = malloc((BUFFER_SIZE + 1) * sizeof(char));
+		if (!buffer_data)
+			return (free(data), NULL);
+		nb_buffer = read(fd, buffer_data, BUFFER_SIZE);
+		if(nb_buffer < 0)
+			return (free(data), free(buffer_data), NULL);
+		buffer_data[nb_buffer] = '\0';
+		tmp = buffer_data;
+		data = ft_strjoin(data, buffer_data);
+		free(tmp);
+		free(buffer_data);
 	}
-	return (content);
+	return (data);
 }
 
+char	*extract_line(char **data)
+{
+	char	*line;
+	char	*newline_position;
+	char	*after_newline;
+	size_t len;
+
+	newline_position = ft_strrchr(*data, '\n');
+	if (newline_position)
+	{
+		len = newline_position - *data + 1;
+		line = ft_substr(*data, 0 , newline_position);
+		after_newline = ft_strdup(newline_position + 1);
+		free(data);
+		data = after_newline;
+	}
+	else
+	{
+		line = ft_strdup(*data);
+		free(*data);
+		*data = NULL;
+	}
+	return (line);
+}
 
 char	*get_next_line(int fd)
 {
-	static char	*content = NULL; //esta va contener todo lo que vamos a leer con otra variable
-
+	static char		*data;
+	char	*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	content = read_buf(fd, content);
-
-	return (content);
+	data = read_buff(fd, data);
+	line = extract_line(data);
+	return (line);
 }
 
 
