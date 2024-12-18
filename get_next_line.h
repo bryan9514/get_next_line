@@ -6,7 +6,7 @@
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:45:00 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/08 15:01:12 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:28:21 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 #define GET_NEXT_LINE
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 5
+#define BUFFER_SIZE 10
 #endif
 
 #include <unistd.h>

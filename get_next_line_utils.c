@@ -6,12 +6,11 @@
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:44:45 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/09 21:02:10 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/18 19:26:23 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 size_t	ft_strlen(const char *str)
 {
@@ -84,7 +83,6 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
-
 
 char	*ft_strdup(const char *s)
 {
