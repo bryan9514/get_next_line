@@ -6,7 +6,7 @@
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:44:30 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/19 18:01:52 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/19 20:46:31 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ char	*read_buff(int fd, char *data)
 	{
 		buffer_data = malloc((BUFFER_SIZE + 1) * sizeof(char));
 		if (!buffer_data)
-			return (free(data),free(buffer_data), NULL);
+			return (free(data), data = NULL, NULL);
 		nb_buffer = read(fd, buffer_data, BUFFER_SIZE);
 		if (nb_buffer < 0)
-            return (free(data), free(buffer_data), NULL);
+            return (free(data), free (buffer_data), NULL);
         if (nb_buffer == 0)
         {
             free(buffer_data);
@@ -41,53 +41,61 @@ char	*read_buff(int fd, char *data)
 	return (data);
 }
 
+
+// char	*extract_line(char **data)
+// {
+// 	char	*line;
+// 	char	*newline_position;
+// 	char	*after_newline;
+// 	size_t	len;
+
+// 	if (!*data || **data == '\0')
+//         return (NULL);
+// 	newline_position = ft_strrchr(*data, '\n');
+// 	if (newline_position)
+// 	{
+// 		len = newline_position - *data + 1;
+// 		line = ft_substr(*data, 0, len);
+// 		after_newline = ft_strdup(newline_position + 1);
+// 		free(*data);
+// 		*data = after_newline;
+// 	}
+// 	else
+// 	{
+// 		line = ft_strdup(*data);
+// 		free(*data);
+// 		*data = NULL;
+// 	}
+// 	return (line);
+// }
+
 char	*extract_line(char **data)
 {
 	char	*line;
-	char	*newline;
+	// char	*newline_position;
+	char	*after_newline;
 	size_t	len;
-	size_t  i;
 
 	len = 0;
-	while (*data[len] != '\n')
-	{
-		if (*data[len] == '\n')
-			line = ft_substr(*data, 0, len);
+	if (!*data || **data == '\0')
+        return (NULL);
+	while ((*data)[len] != '\n' && (*data)[len] != '\0')
 		len++;
+	if ((*data)[len] == '\n')
+	{
+		line = ft_substr(*data, 0, len + 1);
+		after_newline = ft_strdup(*data + len + 1);
+		free(*data);
+		*data = after_newline;
 	}
-	i = 0;
-	while (*data[i] != '\0')
-		i++;
-	newline = ft_substr(*data, len+1, i-1);
-	free(*data);
-	*data = newline;
+	else
+	{
+		line = ft_strdup(*data);
+		free(*data);
+		*data = NULL;
+	}
 	return (line);
 }
-
-// char *extract_line(char **data)
-// {
-//     char *line;
-//     char *newline_position;
-//     char *new_data;
-//     size_t len;
-
-//     newline_pos = ft_strrchr(*data, '\n');
-//     if (newline_position)
-//     {
-//         len = newline_position - *content + 1;
-//         line = ft_substr(*content, 0, len); // Extraer línea completa
-//         new_content = ft_strdup(newline_pos + 1); // Guardar datos restantes
-//         free(*content);
-//         *content = new_content;
-//     }
-//     else
-//     {
-//         line = ft_strdup(*content);
-//         free(*content);
-//         *content = NULL;
-//     }
-//     return (line);
-// }
 
 char	*get_next_line(int fd)
 {
@@ -97,6 +105,11 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 )
 		return (NULL);
 	data = read_buff(fd, data);
+	if (!data)
+	{
+		free(data);
+		return (NULL);
+	}
 	line = extract_line(&data);
 	return (line);
 }
