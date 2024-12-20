@@ -6,7 +6,7 @@
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:44:45 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/19 17:33:49 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:35:54 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,25 +50,6 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	char	*ptr;
-	size_t	i;
-	size_t	total_s;
-
-	total_s = (nmemb * size);
-	ptr = malloc(total_s);
-	if (!ptr)
-		return (NULL);
-	i = 0;
-	while (i < total_s)
-	{
-		ptr[i] = '\0';
-		i++;
-	}
-	return (ptr);
-}
-
 char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
@@ -105,6 +86,7 @@ char	*ft_strdup(const char *s)
 	str[i] = '\0';
 	return (str);
 }
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	unsigned int	i;

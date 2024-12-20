@@ -6,7 +6,7 @@
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:46:22 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/19 15:51:03 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/20 17:32:36 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(void)
 	fd = open("file.txt", O_RDONLY);
 	if (fd <= 0)
 		return (printf("Open Error"), 1);
-	// line = get_next_line(fd);
 	while ((line = get_next_line(fd)) != NULL)
 	{
 		printf("[%d] - %s", count, line);
@@ -31,5 +30,3 @@ int	main(void)
 	}
 	close(fd);
 }
-
-// \e[36m%d : [\e[0m%s\e[36m]\e[0m \n
