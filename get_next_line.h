@@ -6,7 +6,7 @@
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:45:00 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/20 17:30:30 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/20 18:26:12 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 char	*get_next_line(int fd);
 char	*read_buf(int fd, char *content);
 void	*ft_calloc(size_t nmemb, size_t size);
-char	*ft_strdup(const char *s);
+char	*ft_strdup(char *s);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strrchr(const char *s, int c);
