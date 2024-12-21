@@ -6,7 +6,7 @@
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 09:42:38 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/21 13:33:46 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/21 15:42:03 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ char	*read_buff(int fd, char *data)
 			return (free(data), NULL);
 		nb_buffer = read(fd, buffer_data, BUFFER_SIZE);
 		if (nb_buffer < 0)
-			return (free(data), free (buffer_data), NULL);
+			return (free(data), free(buffer_data), NULL);
 		if (nb_buffer == 0)
 		{
 			free(buffer_data);
 			buffer_data = NULL;
-			break;
+			break ;
 		}
 		buffer_data[nb_buffer] = '\0';
 		data = ft_strjoin(data, buffer_data);
@@ -45,7 +45,7 @@ char	*extract_line(char **data)
 {
 	char	*line;
 	char	*after_newline;
-	size_t	len ;
+	size_t	len;
 
 	len = 0;
 	while ((*data)[len] != '\n' && (*data)[len] != '\0')
