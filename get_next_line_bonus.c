@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/21 18:44:30 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/21 15:07:20 by brturcio         ###   ########.fr       */
+/*   Created: 2024/12/21 09:42:38 by brturcio          #+#    #+#             */
+/*   Updated: 2024/12/21 13:33:46 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*read_buff(int fd, char *data)
 {
@@ -68,18 +68,18 @@ char	*extract_line(char **data)
 
 char	*get_next_line(int fd)
 {
-	static char	*data = NULL;
+	static char	*data[1024];
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	data = read_buff(fd, data);
-	if (!data || *data == '\0')
-    {
-		free(data);
-		data = NULL;
+	data[fd] = read_buff(fd, data[fd]);
+	if (!data[fd] || data[fd][0] == '\0')
+	{
+		free(data[fd]);
+		data[fd] = NULL;
 		return (NULL);
 	}
-	line = extract_line(&data);
+	line = extract_line(&data[fd]);
 	return (line);
 }

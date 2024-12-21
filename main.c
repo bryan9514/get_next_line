@@ -6,7 +6,7 @@
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 18:46:22 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/20 17:32:36 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/21 11:03:33 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 		return (printf("Open Error"), 1);
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		printf("[%d] - %s", count, line);
+		printf("\e[36m[%d] : \e[32m%s\e[0m", count, line);
 		free(line);
 		count++;
 	}
