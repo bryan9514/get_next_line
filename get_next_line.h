@@ -6,7 +6,7 @@
 /*   By: brturcio <brturcio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 18:45:00 by brturcio          #+#    #+#             */
-/*   Updated: 2024/12/21 15:45:02 by brturcio         ###   ########.fr       */
+/*   Updated: 2024/12/23 13:33:26 by brturcio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
+#  define BUFFER_SIZE 42
 # endif
 
-# include <fcntl.h> //hay que quitarlo
-# include <stdio.h> //hay que quitarlo 
 # include <stdlib.h>
 # include <unistd.h>
 
